@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yztc.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.yztc.po.User" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="VARCHAR" />
+    <result column="RELATIONSHIP" property="relationship" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+    <result column="BIRTH" property="birth" jdbcType="INTEGER" />
+    <result column="HEIGHT" property="height" jdbcType="INTEGER" />
+    <result column="WEIGHT" property="weight" jdbcType="INTEGER" />
+    <result column="NATION" property="nation" jdbcType="VARCHAR" />
+    <result column="BLOOD_TYPE" property="bloodType" jdbcType="VARCHAR" />
+    <result column="HEALTH" property="health" jdbcType="VARCHAR" />
+    <result column="NATIVE_PLACE" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="MARRY" property="marry" jdbcType="VARCHAR" />
+    <result column="LOCATION" property="location" jdbcType="VARCHAR" />
+    <result column="SALARY" property="salary" jdbcType="INTEGER" />
+    <result column="HOBBY" property="hobby" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, GENDER, RELATIONSHIP, AGE, BIRTH, HEIGHT, WEIGHT, NATION, BLOOD_TYPE, HEALTH, 
+    NATIVE_PLACE, TEL, EMAIL, COMPANY, MARRY, LOCATION, SALARY, HOBBY, CITY
+  </sql>
+  
+  <select id="findById" resultMap="BaseResultMap" parameterType="int">
+  select 
+    <include refid="Base_Column_List" />
+    from information
+    where ID = #{id}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from information
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from information
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yztc.po.User" >
+    insert into information (ID, NAME, GENDER, 
+      RELATIONSHIP, AGE, BIRTH, 
+      HEIGHT, WEIGHT, NATION, 
+      BLOOD_TYPE, HEALTH, NATIVE_PLACE, 
+      TEL, EMAIL, COMPANY, 
+      MARRY, LOCATION, SALARY, 
+      HOBBY, CITY)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{relationship,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{birth,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, 
+      #{bloodType,jdbcType=VARCHAR}, #{health,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{marry,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
+      #{hobby,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yztc.po.User" >
+    insert into information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="relationship != null" >
+        RELATIONSHIP,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="birth != null" >
+        BIRTH,
+      </if>
+      <if test="height != null" >
+        HEIGHT,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
+      </if>
+      <if test="nation != null" >
+        NATION,
+      </if>
+      <if test="bloodType != null" >
+        BLOOD_TYPE,
+      </if>
+      <if test="health != null" >
+        HEALTH,
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE,
+      </if>
+      <if test="tel != null" >
+        TEL,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="company != null" >
+        COMPANY,
+      </if>
+      <if test="marry != null" >
+        MARRY,
+      </if>
+      <if test="location != null" >
+        LOCATION,
+      </if>
+      <if test="salary != null" >
+        SALARY,
+      </if>
+      <if test="hobby != null" >
+        HOBBY,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null" >
+        #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birth != null" >
+        #{birth,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null" >
+        #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        #{health,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="marry != null" >
+        #{marry,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="hobby != null" >
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yztc.po.User" >
+    update information
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null" >
+        RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birth != null" >
+        BIRTH = #{birth,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        HEIGHT = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        WEIGHT = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null" >
+        BLOOD_TYPE = #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        HEALTH = #{health,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        COMPANY = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="marry != null" >
+        MARRY = #{marry,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        SALARY = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="hobby != null" >
+        HOBBY = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yztc.po.User" >
+    update information
+    set NAME = #{name,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=VARCHAR},
+      RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=INTEGER},
+      BIRTH = #{birth,jdbcType=INTEGER},
+      HEIGHT = #{height,jdbcType=INTEGER},
+      WEIGHT = #{weight,jdbcType=INTEGER},
+      NATION = #{nation,jdbcType=VARCHAR},
+      BLOOD_TYPE = #{bloodType,jdbcType=VARCHAR},
+      HEALTH = #{health,jdbcType=VARCHAR},
+      NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      COMPANY = #{company,jdbcType=VARCHAR},
+      MARRY = #{marry,jdbcType=VARCHAR},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      SALARY = #{salary,jdbcType=INTEGER},
+      HOBBY = #{hobby,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
